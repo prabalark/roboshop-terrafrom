@@ -9,7 +9,6 @@ module "vpc" {
 
 }
 
-
 module "app" {
   source = "git::https://github.com/prabalark/tf-module-app.git"
 }

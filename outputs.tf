@@ -3,5 +3,5 @@ output "subnet_ids" {
 }
 
 output "vpc" {
-  value = lookup(module.vpc ,"main" ,null)
+  value = lookup(lookup(module.vpc ,"main" ,null),"subnet_ids",null)
 }

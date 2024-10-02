@@ -9,10 +9,7 @@ module "vpc" {
 
 }
 
-output "subnet_ids" {
-  value = "module.subnets"
-}
 
-output "route_table_ids" {
-  value = "module.subnets"
+module "app" {
+  source = "git::https://github.com/prabalark/tf-module-app.git"
 }

@@ -27,3 +27,12 @@ vpc = {
     }
   }
 }
+
+app = {
+  frontend = {
+    instance_type = "t3.small"
+  }
+  catalogue ={
+    instance_type = "t3.small"
+  }
+}

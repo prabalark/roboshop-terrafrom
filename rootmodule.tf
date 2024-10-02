@@ -9,6 +9,9 @@ module "vpc" {
 
 }
 
-module "app" {
+module "web" {
   source = "git::https://github.com/prabalark/tf-module-app.git"
+  instance_type = each.value["instance_type"]
+  subnet_ids = element(lookup(lookup(lookup(lookup(module.vpc, "main" , null),"subnets",null),each.value["subnet_name"],null)
+      ,"subnet_ids",null ),0)
 }

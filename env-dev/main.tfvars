@@ -4,6 +4,7 @@ bastion_cidr     = ["172.31.37.42/32"]
 default_vpc_id   = "vpc-07c12987afb44bf58"
 default_vpc_cidr = "172.31.0.0/16"
 default_vpc_rtid = "rtb-08dcafcb297a9ce73"
+kms_arn =
 
 vpc = {
   main = {
@@ -72,4 +73,13 @@ app = {
  #   instance_type = "t3.small"
  #   subnet_name = "app"
  # }
+}
+
+docdb = {
+  main = {
+    engine_version = "4.0.0"
+    instance_count = 1
+    instance_class = "db.t3.medium"
+
+  }
 }

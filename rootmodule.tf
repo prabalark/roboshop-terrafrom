@@ -29,3 +29,25 @@ module "web" {
   allow_app_cidr = lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["allow_app_cidr"],null),"subnet_cidrs",null )
 }
 
+module "docdb" {
+  source = "git::https://github.com/prabalark/tf-module-docdb.git"
+
+   for_each = var.docdb
+  engine_version = each.value["engine_version"]
+  instance_count = each.value["instance_count"]
+  instance_class = each.value["instance_class"]
+
+  env     = var.env
+  vpc_id  = local.vpc_id
+  tags    = local.tags
+  kms_arn = var.kms_arn
+}
+
+
+variable "vpc_id" {}
+variable "allow_app_cidr" {}
+
+variable "kms_key_id" {}
+variable "subnets" {}
+
+

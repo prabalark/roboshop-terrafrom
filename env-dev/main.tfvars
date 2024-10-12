@@ -15,17 +15,17 @@ vpc = {
         cidr_block = ["10.0.0.0/24","10.0.1.0/24"]
         azs = ["us-east-1a","us-east-1b"]
       }
-      web = {
+      web = {            #frontend
         name = "web"
         cidr_block = ["10.0.2.0/24","10.0.3.0/24"]
         azs = ["us-east-1a","us-east-1b"]
       }
-      app = {
+      app = {         # all application server
         name = "app"
         cidr_block = ["10.0.4.0/24","10.0.5.0/24"]
         azs = ["us-east-1a","us-east-1b"]
       }
-      db = {
+      db = {           # database
         name = "db"
         cidr_block = ["10.0.6.0/24","10.0.7.0/24"]
         azs = ["us-east-1a","us-east-1b"]
@@ -80,6 +80,6 @@ docdb = {
     engine_version = "4.0.0"
     instance_count = 1
     instance_class = "db.t3.medium"
-
+    subnet_name    = "db"
   }
 }

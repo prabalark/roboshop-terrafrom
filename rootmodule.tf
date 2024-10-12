@@ -44,12 +44,12 @@ module "docdb" {
 
   subnet_id = lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["subnet_name"],null),"subnet_ids",null )
   vpc_id = lookup(lookup(module.vpc,"main",null),"vpc_id",null)
-  allow_app_cidr = lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["allow_app_cidr"],null),"subnet_cidrs",null )
+  allow_app_cidr = lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["allow_db_cidr"],null),"subnet_cidrs",null )
 }
 
 
 variable "vpc_id" {}
-variable "allow_app_cidr" {}
+variable "allow_db_cidr" {}
 
 variable "kms_key_id" {}
 variable "subnets" {}

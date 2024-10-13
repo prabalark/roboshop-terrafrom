@@ -32,7 +32,7 @@ module "web" {
 module "docdb" {
   source = "git::https://github.com/prabalark/tf-module-docdb.git"
 
-   for_each = var.docdb
+  for_each = var.docdb
   engine_version = each.value["engine_version"]
   instance_count = each.value["instance_count"]
   instance_class = each.value["instance_class"]

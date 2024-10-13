@@ -36,13 +36,10 @@ module "docdb" {
   engine_version = each.value["engine_version"]
   instance_count = each.value["instance_count"]
   instance_class = each.value["instance_class"]
-
   env     = var.env
   kms_arn = var.kms_arn
-
   vpc_id  = local.vpc_id
   tags    = local.tags
-
   subnet_id = lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["subnet_name"],null),"subnet_ids",null )
   # keeping in local.tf : vpc_id = lookup(lookup(module.vpc,"main",null),"vpc_id",null)
   allow_app_cidr = lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["allow_db_cidr"],null),"subnet_cidrs",null )

@@ -49,7 +49,5 @@ module "docdb" {
 }
 
 
-variable "kms_key_id" {}
-
 
 

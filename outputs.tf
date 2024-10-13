@@ -1,4 +1,4 @@
-output "subnet_ids" {
+output "subnets" {
   value = "module.subnets"
 }
 

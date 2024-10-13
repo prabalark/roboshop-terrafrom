@@ -24,7 +24,7 @@ module "web" {
   env= var.env
   bastion_cidr=var.bastion_cidr
 
-  subnets = lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["subnet_name"],null),"subnet_ids",null )
+  subnet_id = lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["subnet_name"],null),"subnet_ids",null )
   vpc_id = lookup(lookup(module.vpc,"main",null),"vpc_id",null)
   allow_app_cidr = lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["allow_app_cidr"],null),"subnet_cidrs",null )
 }

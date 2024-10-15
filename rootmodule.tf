@@ -63,7 +63,7 @@ module "rds" {
 }
 
 module "elasticache" {
-  source = "git::https://github.com/raghudevopsb72/tf-module-elasticache.git"
+  source = "git::https://github.com/prabalark/tf-module-elasticache.git"
 
   for_each                = var.elasticache
   engine_version          = each.value["engine_version"]

@@ -85,7 +85,7 @@ module "rabbitmq" {
   source = "git::https://github.com/prabalark/tf-module-amazon-mq.git"
 
   for_each      = var.rabbitmq
-  instance_type = each.value["instance_type"
+  instance_type = each.value["instance_type"]
 
   env          = var.env
   kms_arn      = var.kms_arn

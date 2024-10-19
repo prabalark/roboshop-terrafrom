@@ -102,7 +102,7 @@ module "rabbitmq" {
 
 
 module "alb" {
-  source = "git::https://github.com/raghudevopsb72/tf-module-alb.git"
+  source = "git::https://github.com/prabalark/tf-module-loadbal.git"
 
   for_each       = var.alb
   name           = each.value["name"]

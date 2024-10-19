@@ -21,6 +21,7 @@ module "web" { # app
   max_size         = each.value["max_size"]
   min_size         = each.value["min_size"]
   app_port         = each.value["app_port"]
+
   tags             = merge(local.tags, { Monitor = "true" })
   env              = var.env
   bastion_cidr     = var.bastion_cidr

@@ -118,7 +118,7 @@ alb = {
   public = {
     name           = "public"
     subnet_name    = "public" # this is for frontend load-bal
-    allow_alb_cidr = null
+    allow_alb_cidr = null #this given in module-alb
     internal       = false
   }
   private = {

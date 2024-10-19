@@ -12,7 +12,6 @@ module "vpc" {
 }
 
 module "web" { # app
-  depends_on = [module.vpc, module.docdb, module.rds, module.elasticache, module.rabbitmq, module.alb]
   source = "git::https://github.com/prabalark/tf-module-app.git"
 
   for_each      = var.app

@@ -11,7 +11,7 @@ module "vpc" {
   default_vpc_rtid = var.default_vpc_rtid
 }
 
-module "web" {
+module "web" { # app
   source = "git::https://github.com/prabalark/tf-module-app.git"
 
   for_each      = var.app
@@ -20,6 +20,7 @@ module "web" {
   desired_capacity = each.value["desired_capacity"]
   max_size         = each.value["max_size"]
   min_size         = each.value["min_size"]
+  app_port         = each.value["app_port"]
   tags             = merge(local.tags, { Monitor = "true" })
   env              = var.env
   bastion_cidr     = var.bastion_cidr

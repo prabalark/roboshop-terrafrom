@@ -117,7 +117,7 @@ rabbitmq = {
 alb = {
   public = {
     name           = "public"
-    subnet_name    = "public"
+    subnet_name    = "public" # this is for frontend load-bal
     allow_alb_cidr = null
     internal       = false
   }

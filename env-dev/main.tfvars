@@ -121,6 +121,12 @@ alb = {
     allow_alb_cidr = null
     internal       = false
   }
+  private = {
+    name           = "private"
+    subnet_name    = "app" # this is for app-server load-bal
+    allow_alb_cidr = "web"
+    internal       = true
+  }
 }
 
 

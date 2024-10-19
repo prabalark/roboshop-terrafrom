@@ -99,3 +99,38 @@ module "rabbitmq" {
   allow_db_cidr = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["allow_db_cidr"], null), "subnet_cidrs", null)
 
 }
+
+
+module "alb" {
+  source = "git::https://github.com/raghudevopsb72/tf-module-alb.git"
+
+  for_each       = var.alb
+  name           = each.value["name"]
+  internal       = each.value["internal"]
+
+  tags   = local.tags
+  env    = var.env
+
+  vpc_id = local.vpc_id
+  subnets        = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["subnet_name"], null), "subnet_ids", null)
+  allow_alb_cidr = each.value["name"] == "public" ? ["0.0.0.0/0"] : concat(lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), each.value["allow_alb_cidr"], null), "subnet_cidrs", null), lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnets", null), "app", null), "subnet_cidrs", null))
+
+}
+
+
+variable "name" {}
+variable "env" {}
+variable "vpc_id" {}
+variable "allow_alb_cidr" {}
+
+variable "internal" {}
+variable "subnets" {}
+
+variable "tags" {}
+
+
+
+
+
+
+

@@ -6,6 +6,8 @@ default_vpc_cidr = "172.31.0.0/16"
 default_vpc_rtid = "rtb-08dcafcb297a9ce73"
 kms_arn          = "arn:aws:kms:us-east-1:605698327224:key/8dae0259-1d22-47ef-a533-2cf7a81cb5c5"
 
+domain_name      = "devops72bat.online"  # in router53 domain_name
+
 vpc = {
   main = {
     cidr_block = "10.0.0.0/16"
@@ -37,23 +39,30 @@ vpc = {
 app = {
   frontend = {
     name = "frontend"
-    instance_type = "t3.small"
-    subnet_name = "web"
-    allow_app_cidr = "public"
-    desired_capacity = 2
-    max_size         = 10
-    min_size         = 2
-    app_port         = 80
+    instance_type     = "t3.small"
+    subnet_name       = "web"
+    allow_app_cidr    = "public"
+    desired_capacity  = 2
+    max_size          = 10
+    min_size          = 2
+    app_port          = 80
+
+    lb_type           = "public"
+    listener_priority = 1  # web-server priority num will different
+
   }
   catalogue ={
     name = "catalogue"
-    instance_type = "t3.small"
-    subnet_name = "app"
-    allow_app_cidr ="web"
-    desired_capacity = 2
-    max_size         = 10
-    min_size         = 2
-    app_port         = 8080
+    instance_type     = "t3.small"
+    subnet_name       = "app"
+    allow_app_cidr    = "web"
+    desired_capacity  = 2
+    max_size          = 10
+    min_size          = 2
+    app_port          = 8080
+
+    lb_type           = "private"
+    listener_priority = 1  # app-server priority num will different
   }
  # cart ={
  #   name = "cart"

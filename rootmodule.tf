@@ -29,12 +29,12 @@ module "web" { # app
   domain_name = var.domain_name
 
   domain_id   = var.domain_id
-  dns_name    = "each.value["dns_name"].${var.domain_name}"
-  lb_dns_name = lookup(lookup(module.alb, each.value["lb_type"], null), "dns_name", null)
+  dns_name    = each.value["name"] == "frontend" ? each.value["dns_name"] : "${each.value["name"]}-${var.env}"
   #dns_name    = each.value["name"] == "frontend" ? each.value["dns_name"] : "${each.value["name"]}-${var.env}"
      # in router53 : only for frontend we dnt require starting frnt.dev -> dev.de72..
        # remaining cata.dev.de72 etc for this in rootmodule kept condition
      # otherwise give variable in main.tfvars give names - iam doing this
+  lb_dns_name = lookup(lookup(module.alb, each.value["lb_type"], null), "dns_name", null)
 
   tags             = merge(local.tags, { Monitor = "true" })
   env              = var.env

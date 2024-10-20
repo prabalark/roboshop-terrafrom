@@ -120,7 +120,10 @@ alb = {
   public = {
     name           = "public"
     subnet_name    = "public" # this is for frontend load-bal
-    allow_alb_cidr = null #this given in module-alb
+
+    allow_alb_cidr = null
+    #this given in module-alb we get internet from outside ["0.0.0.0/0"]
+
     internal       = false
   }
   private = {

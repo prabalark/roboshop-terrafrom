@@ -29,11 +29,12 @@ module "web" { # app
   domain_name = var.domain_name
 
   domain_id   = var.domain_id
+
   dns_name    = each.value["name"] == "frontend" ? each.value["dns_name"] : "${each.value["name"]}-${var.env}"
-  #dns_name    = each.value["name"] == "frontend" ? each.value["dns_name"] : "${each.value["name"]}-${var.env}"
-     # in router53 : only for frontend we dnt require starting frnt.dev -> dev.de72..
+     # cond-1 in router53 : only for frontend we require starting like -> dev.de72..
        # remaining cata.dev.de72 etc for this in rootmodule kept condition
-     # otherwise give variable in main.tfvars give names in each web/app server
+     # cond-2 : otherwise give variable in main.tfvars give names in each web/app server
+
   lb_dns_name = lookup(lookup(module.alb, each.value["lb_type"], null), "dns_name1", null) #tf-laodbal-output.tf
 
   tags             = merge(local.tags, { Monitor = "true" })

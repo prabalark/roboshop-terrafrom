@@ -66,6 +66,7 @@ app = {
     lb_type           = "private"
     listener_priority = 1  # app-server priority num will different
 
+    dns_name          = "catalogue-dev"
   }
  # cart ={
  #   name = "cart"

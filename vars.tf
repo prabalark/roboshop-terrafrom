@@ -11,3 +11,4 @@ variable "rds" {}
 variable "elasticache" {}
 variable "rabbitmq" {}
 variable "alb" {}
+variable "domain_name" {}

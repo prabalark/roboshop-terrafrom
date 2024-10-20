@@ -26,6 +26,7 @@ module "web" { # app
   listener_priority =each.value["listener_priority"]
   listener_arn  = lookup(lookup(module.alb, each.value["lb_type"], null), "listener_arn", null)
      # check lb_type : public & private | listener_arn in tf-loadbal in outputs.tf
+   domain_name = var.domain_name
 
   tags             = merge(local.tags, { Monitor = "true" })
   env              = var.env

@@ -31,7 +31,6 @@ module "web" { # app
      #only for frontend we dnt require starting frnt.dev -> dev....
    domain_name = var.domain_name
 
-
   tags             = merge(local.tags, { Monitor = "true" })
   env              = var.env
   bastion_cidr     = var.bastion_cidr

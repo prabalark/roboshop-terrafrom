@@ -26,6 +26,8 @@ module "web" { # app
   listener_priority =each.value["listener_priority"]
   listener_arn  = lookup(lookup(module.alb, each.value["lb_type"], null), "listener_arn", null)
      # check lb_type : public & private | listener_arn in tf-loadbal in outputs.tf
+   dns_name    = each.value["name"] == "frontend" ? each.value["dns_name"] : "${each.value["name"]}-${var.env}"
+     #only for frontend we dnt require starting frnt.dev -> dev....
    domain_name = var.domain_name
 
   tags             = merge(local.tags, { Monitor = "true" })

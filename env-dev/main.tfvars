@@ -49,6 +49,7 @@ app = {
 
     lb_type           = "public"
     listener_priority = 1  # web-server priority num will different
+    dns_name          = "dev"
 
   }
   catalogue ={
@@ -63,6 +64,7 @@ app = {
 
     lb_type           = "private"
     listener_priority = 1  # app-server priority num will different
+
   }
  # cart ={
  #   name = "cart"

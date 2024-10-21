@@ -37,7 +37,7 @@ module "web" { # app
 
   lb_dns_name = lookup(lookup(module.alb, each.value["lb_type"], null), "dns_name1", null) #tf-laodbal-output.tf
 
-  kms_arn      =
+  kms_arn   = var.kms_arn
 
   tags             = merge(local.tags, { Monitor = "true" })
   env              = var.env

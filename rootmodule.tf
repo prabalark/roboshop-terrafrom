@@ -22,8 +22,10 @@ module "web" { # app
   max_size         = each.value["max_size"]
   min_size         = each.value["min_size"]
   app_port         = each.value["app_port"]
+  parameters       = each.value["parameters"]
 
   listener_priority =each.value["listener_priority"]
+
   listener_arn  = lookup(lookup(module.alb, each.value["lb_type"], null), "listener_arn", null)
      # check lb_type : public & private | listener_arn in tf-loadbal in outputs.tf
   domain_name = var.domain_name

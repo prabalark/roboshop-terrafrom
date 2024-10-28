@@ -52,7 +52,7 @@ app = {
     listener_priority = 1  # web-server priority num will different
 
     dns_name          = "dev"
-
+    parameters        = [] #empty
   }
   catalogue ={
     name = "catalogue"
@@ -66,7 +66,7 @@ app = {
 
     lb_type           = "private"
     listener_priority = 1  # app-server priority num will different
-
+    parameters        = ["docdb"] # connecting to db
   }
  # cart ={
  #   name = "cart"

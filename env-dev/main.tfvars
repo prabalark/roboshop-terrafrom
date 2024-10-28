@@ -52,7 +52,7 @@ app = {
     listener_priority = 1  # web-server priority num will different
 
     dns_name          = "dev"
-    parameters        = [] #empty
+    parameters        = [] #empty not conencting to any db
   }
   catalogue ={
     name = "catalogue"

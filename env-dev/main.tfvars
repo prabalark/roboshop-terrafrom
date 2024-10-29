@@ -55,7 +55,7 @@ app = {
     parameters        = [] #empty not conencting to any db
   }
   catalogue ={
-    name = "catalogue"
+    name              = "catalogue"
     instance_type     = "t3.small"
     subnet_name       = "app"
     allow_app_cidr    = "app"

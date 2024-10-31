@@ -45,7 +45,7 @@ app = {
     allow_app_cidr    = "public"
     desired_capacity  = 1
     max_size          = 10
-    min_size          = 2
+    min_size          = 1
     app_port          = 80
 
     lb_type           = "public"
@@ -61,7 +61,7 @@ app = {
     allow_app_cidr    = "app"
     desired_capacity  = 1
     max_size          = 10
-    min_size          = 2
+    min_size          = 1
     app_port          = 8080
 
     lb_type           = "private"

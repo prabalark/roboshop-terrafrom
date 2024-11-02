@@ -112,7 +112,7 @@ module "rabbitmq" {
   env          = var.env
   kms_arn      = var.kms_arn
   bastion_cidr = var.bastion_cidr
-  #domain_id    = var.domain_id
+  domain_id    = var.domain_id
 
   vpc_id       = local.vpc_id
   tags         = local.tags

@@ -13,3 +13,4 @@ variable "rabbitmq" {}
 variable "alb" {}
 variable "domain_name" {}
 variable "domain_id" {}
+variable "monitor_cidr" {}

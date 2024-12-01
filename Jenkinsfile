@@ -2,7 +2,7 @@ pipeline {
 
   agent {
     node {
-      label 'workstation'
+      label 'terraform-workstation'
     }
   }
   parameters {

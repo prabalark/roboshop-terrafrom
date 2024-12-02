@@ -7,7 +7,7 @@ default_vpc_rtid = "rtb-08dcafcb297a9ce73"
 kms_arn          = "arn:aws:kms:us-east-1:605698327224:key/8dae0259-1d22-47ef-a533-2cf7a81cb5c5"
 
 domain_name      = "devops72bat.online"  # in router53 Hosted zone name
-domain_id        = "Z03484922ZJTTIW47BAFL" # in router53 Hosted zone ID
+domain_id        = "Z003959020JMJ3CJ14E1Z" # in router53 Hosted zone ID
 
 vpc = {
   main = {

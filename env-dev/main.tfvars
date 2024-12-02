@@ -1,5 +1,5 @@
 env              = "dev"
-bastion_cidr     = ["172.31.37.42/32"]
+bastion_cidr     = ["172.31.37.42/32"]     # terraform pri-ip
 monitor_cidr     = ["172.31.93.183/32"]
 default_vpc_id   = "vpc-0295140958ce29ed8"  # check in  default vpc
 default_vpc_cidr = "172.31.0.0/16"          # check in  default vpc

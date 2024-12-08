@@ -119,7 +119,7 @@ app = {
  #   listener_priority = 5
  #   lb_type           = "private"
  #   parameters        = []
-  }
+ # }
 }
 
 docdb = {

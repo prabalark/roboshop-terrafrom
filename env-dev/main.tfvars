@@ -4,7 +4,7 @@ monitor_cidr     = ["172.31.93.183/32"]     # PROMETHEUS pri ip
 default_vpc_id   = "vpc-0295140958ce29ed8"  # check in  default vpc
 default_vpc_cidr = "172.31.0.0/16"          # check in  default vpc
 default_vpc_rtid = "rtb-0358f1519d5a94f36"  # check in  default rout table
-kms_arn          = "arn:aws:kms:us-east-1:605698327224:key/8dae0259-1d22-47ef-a533-2cf7a81cb5c5"
+kms_arn          = "arn:aws:kms:us-east-1:762233751080:key/6f8c51d4-28a6-4003-a9da-4c25b067e30b"
 
 domain_name      = "devops72bat.online"  # in router53 Hosted zone name
 domain_id        = "Z003959020JMJ3CJ14E1Z" # in router53 Hosted zone ID

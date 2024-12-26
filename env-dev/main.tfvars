@@ -80,7 +80,7 @@ app = {
   #  listener_priority = 2
   #  lb_type           = "private"
   #  parameters        = ["docdb"]
-  }
+  #}
   cart = {
     name              = "cart"
     instance_type     = "t3.small"
@@ -119,7 +119,7 @@ app = {
   #  listener_priority = 5
   #  lb_type           = "private"
   #  parameters        = []
-  }
+  #}
 }
 
 docdb = {

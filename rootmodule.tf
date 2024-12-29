@@ -41,7 +41,7 @@ module "web" { # app
 
   kms_arn   = var.kms_arn
 
-  tags             = merge(local.tags, { Monitor = "true" })
+  tags             = merge(local.tags, { monitor = "true" })
   env              = var.env
   bastion_cidr     = var.bastion_cidr
   monitor_cidr     = var.monitor_cidr

@@ -11,7 +11,7 @@ domain_id        = "Z003959020JMJ3CJ14E1Z" # in router53 Hosted zone ID
 
 vpc = {
   main = {
-    cidr_block = "10.0.0.0/16"
+    cidr_block = "10.100.0.0/16"
     subnets = {
       public = {
         name = "public"

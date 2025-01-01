@@ -1,4 +1,4 @@
-env              = "dev"
+env              = "prod"
 bastion_cidr     = ["172.31.36.132/32"]    # terraform pri-ip
 monitor_cidr     = ["172.31.93.225/32"]     # PROMETHEUS pri ip
 default_vpc_id   = "vpc-0295140958ce29ed8"  # check in  default vpc

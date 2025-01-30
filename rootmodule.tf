@@ -11,45 +11,45 @@ module "vpc" {
   default_vpc_rtid = var.default_vpc_rtid
 }
 
-module "web" { # app
- // depends_on = [module.vpc, module.docdb, module.rds, module.elasticache, module.rabbitmq, module.alb]
-  source = "git::https://github.com/prabalark/tf-module-app.git"
-
-  for_each      = var.app
-  instance_type = each.value["instance_type"]
-  name          = each.value["name"]
-  desired_capacity = each.value["desired_capacity"]
-  max_size         = each.value["max_size"]
-  min_size         = each.value["min_size"]
-  app_port         = each.value["app_port"]
-  parameters       = each.value["parameters"]
-
-  listener_priority =each.value["listener_priority"]
-
-  listener_arn  = lookup(lookup(module.alb, each.value["lb_type"], null), "listener_arn", null)
-     # check lb_type : public & private | listener_arn in tf-loadbal in outputs.tf
-  domain_name = var.domain_name
-
-  domain_id   = var.domain_id
-
-  dns_name    = each.value["name"] == "frontend" ? each.value["dns_name"] : "${each.value["name"]}-${var.env}"
-     # cond-1 in router53 : only for frontend we require starting like -> dev.de72..
-       # remaining cata.dev.de72 etc for this in rootmodule kept condition
-     # cond-2 : otherwise give variable in main.tfvars give names in each web/app server
-
-  lb_dns_name = lookup(lookup(module.alb, each.value["lb_type"], null), "dns_name1", null) #tf-laodbal-output.tf
-
-  kms_arn   = var.kms_arn
-
-  tags             = merge(local.tags, { monitor = "true" })
-  env              = var.env
-  bastion_cidr     = var.bastion_cidr
-  monitor_cidr     = var.monitor_cidr
-  subnets = lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["subnet_name"],null),"subnet_ids",null )
-  vpc_id = lookup(lookup(module.vpc,"main",null),"vpc_id",null)
-  allow_app_cidr = lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["allow_app_cidr"],null),"subnet_cidrs",null )
-
-}
+//module "web" { # app
+//  depends_on = [module.vpc, module.docdb, module.rds, module.elasticache, module.rabbitmq, module.alb]
+//  source = "git::https://github.com/prabalark/tf-module-app.git"
+//
+//  for_each      = var.app
+//  instance_type = each.value["instance_type"]
+//  name          = each.value["name"]
+//  desired_capacity = each.value["desired_capacity"]
+//  max_size         = each.value["max_size"]
+//  min_size         = each.value["min_size"]
+//  app_port         = each.value["app_port"]
+//  parameters       = each.value["parameters"]
+//
+//  listener_priority =each.value["listener_priority"]
+//
+//  listener_arn  = lookup(lookup(module.alb, each.value["lb_type"], null), "listener_arn", null)
+//     # check lb_type : public & private | listener_arn in tf-loadbal in outputs.tf
+//  domain_name = var.domain_name
+//
+//  domain_id   = var.domain_id
+//
+//  dns_name    = each.value["name"] == "frontend" ? each.value["dns_name"] : "${each.value["name"]}-${var.env}"
+//     # cond-1 in router53 : only for frontend we require starting like -> dev.de72..
+//       # remaining cata.dev.de72 etc for this in rootmodule kept condition
+//     # cond-2 : otherwise give variable in main.tfvars give names in each web/app server
+//
+//  lb_dns_name = lookup(lookup(module.alb, each.value["lb_type"], null), "dns_name1", null) #tf-laodbal-output.tf
+//
+//  kms_arn   = var.kms_arn
+//
+//  tags             = merge(local.tags, { monitor = "true" })
+//  env              = var.env
+//  bastion_cidr     = var.bastion_cidr
+//  monitor_cidr     = var.monitor_cidr
+//  subnets = lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["subnet_name"],null),"subnet_ids",null )
+//  vpc_id = lookup(lookup(module.vpc,"main",null),"vpc_id",null)
+//  allow_app_cidr = lookup(lookup(lookup(lookup(module.vpc,"main",null),"subnets",null),each.value["allow_app_cidr"],null),"subnet_cidrs",null )
+//
+//}
 
 //module "docdb" {
 //  source = "git::https://github.com/prabalark/tf-module-docdb.git"
